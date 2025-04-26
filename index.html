@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>廉洁教育平台 - 首页</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+  <style>
+    :root {
+      --primary-color: #1E8E6E;
+      --secondary-color: #53B78A;
+      --accent-color: #F5A623;
+      --light-green: #E8F5F0;
+      --white: #FFFFFF;
+      --black: #333333;
+      --gray: #F8F8F8;
+      --text-gray: #7A7E83;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #1E8E6E, #53B78A);
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: var(--white);
+      position: relative;
+    }
+
+    /* 水墨背景 */
+    .ink-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.05;
+      background-image: url('https://img.freepik.com/free-photo/ink-background_53876-90941.jpg');
+      background-size: cover;
+      background-position: center;
+      mix-blend-mode: overlay;
+      z-index: -2;
+    }
+
+    /* 导航栏 */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .navbar-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: bold;
+      color: var(--primary-color);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-links li {
+      margin: 0 5px;
+      position: relative;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--black);
+      padding: 10px 15px;
+      border-radius: 4px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      display: block;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--primary-color);
+      background-color: var(--light-green);
+    }
+
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 3px;
+      background-color: var(--primary-color);
+      border-radius: 2px;
+    }
+
+    /* 主要内容区 */
+    .main-content {
+      max-width: 1200px;
+      margin: 100px auto 50px;
+      padding: 0 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* 标语区域 */
+    .slogan-container {
+      text-align: center;
+      padding: 80px 20px;
+      position: relative;
+      margin-bottom: 60px;
+    }
+
+    .slogan-text {
+      font-size: 40px;
+      font-weight: bold;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+      position: relative;
+      display: inline-block;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .slogan-text:hover {
+      transform: scale(1.05);
+    }
+
+    .slogan-desc {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* 快速入口图标 */
+    .quick-access {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 80px;
+    }
+
+    .access-item {
+      width: 220px;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .access-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .access-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    }
+
+    .access-icon {
+      width: 80px;
+      height: 80px;
+      background-color: var(--light-green);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto 20px;
+      position: relative;
+    }
+
+    .access-icon img {
+      width: 40px;
+      height: 40px;
+      transition: all 0.3s ease;
+    }
+
+    .access-item:hover .access-icon img {
+      transform: scale(1.2);
+    }
+
+    .access-item:nth-child(1) .access-icon {
+      background-color: rgba(30, 142, 110, 0.2);
+    }
+
+    .access-item:nth-child(2) .access-icon {
+      background-color: rgba(83, 183, 138, 0.2);
+    }
+
+    .access-item:nth-child(3) .access-icon {
+      background-color: rgba(121, 205, 187, 0.2);
+    }
+
+    .access-item:nth-child(4) .access-icon {
+      background-color: rgba(172, 225, 214, 0.2);
+    }
+
+    .access-title {
+      color: var(--black);
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .access-desc {
+      color: var(--text-gray);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    /* 飘落的莲花和竹叶 */
+    .falling-elements {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .element {
+      position: absolute;
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .lotus {
+      width: 40px;
+      height: 40px;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23FFFFFF" d="M50,0 C60,25 90,40 90,60 C90,80 70,90 50,90 C30,90 10,80 10,60 C10,40 40,25 50,0 Z"></path></svg>');
+    }
+
+    .bamboo {
+      width: 20px;
+      height: 60px;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 300"><path fill="%23FFFFFF" d="M40,0 L60,0 L60,50 C80,50 80,70 60,70 L60,120 C80,120 80,140 60,140 L60,190 C80,190 80,210 60,210 L60,260 C80,260 80,280 60,280 L60,300 L40,300 L40,280 C20,280 20,260 40,260 L40,210 C20,210 20,190 40,190 L40,140 C20,140 20,120 40,120 L40,70 C20,70 20,50 40,50 L40,0 Z"></path></svg>');
+    }
+
+    /* 莲花绽放动画 */
+    .lotus-bloom {
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.2);
+      pointer-events: none;
+      z-index: 1;
+      animation: bloom 1.5s forwards ease-out;
+    }
+
+    @keyframes bloom {
+      0% {
+        width: 0;
+        height: 0;
+        opacity: 0.7;
+      }
+
+      100% {
+        width: 300px;
+        height: 300px;
+        opacity: 0;
+      }
+    }
+
+    /* 脚注 */
+    footer {
+      background-color: rgba(0, 0, 0, 0.1);
+      text-align: center;
+      padding: 20px;
+      color: rgba(255, 255, 255, 0.8);
+      margin-top: 50px;
+      backdrop-filter: blur(5px);
+    }
+
+    /* 滚动指示器 */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 30px;
+      height: 50px;
+      border: 2px solid rgba(255, 255, 255, 0.8);
+      border-radius: 15px;
+      display: flex;
+      justify-content: center;
+      padding-top: 10px;
+    }
+
+    .scroll-dot {
+      width: 6px;
+      height: 6px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      animation: scrollAnim 1.5s infinite;
+    }
+
+    @keyframes scrollAnim {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(15px);
+        opacity: 0;
+      }
+    }
+
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+      .navbar-container {
+        flex-direction: column;
+        padding: 10px;
+      }
+
+      .logo {
+        margin-bottom: 10px;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .nav-links li {
+        margin-bottom: 5px;
+      }
+
+      .slogan-text {
+        font-size: 30px;
+      }
+
+      .quick-access {
+        gap: 15px;
+      }
+
+      .access-item {
+        width: calc(50% - 15px);
+        padding: 20px 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .access-item {
+        width: 100%;
+      }
+
+      .slogan-text {
+        font-size: 24px;
+      }
+
+      .slogan-desc {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 水墨背景 -->
+  <div class="ink-background"></div>
+
+  <!-- 飘落的莲花和竹叶 -->
+  <div class="falling-elements"></div>
+
+  <!-- 导航栏 -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo">
+        <img
+          src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path fill='%231E8E6E' d='M50,10 C60,25 80,35 80,50 C80,65 65,80 50,80 C35,80 20,65 20,50 C20,35 40,25 50,10 Z'/></svg>"
+          alt="Logo">
+        <div class="logo-text">廉洁教育平台</div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">首页</a></li>
+        <li><a href="knowledge.html">廉洁文化</a></li>
+        <li><a href="showcase.html">作品墙</a></li>
+        <li><a href="pledge-wall.html">承诺墙</a></li>
+        <li><a href="activity-center.html">活动中心</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- 主要内容区 -->
+  <div class="main-content">
+    <!-- 标语区域 -->
+    <div class="slogan-container">
+      <h1 class="slogan-text" id="slogan">清正在德，廉洁在志</h1>
+      <p class="slogan-desc">传承中华优秀传统文化，弘扬廉洁精神，共建清风正气的美好社会</p>
+      <div class="scroll-indicator">
+        <div class="scroll-dot"></div>
+      </div>
+    </div>
+
+    <!-- 快速入口图标 -->
+    <div class="quick-access">
+      <div class="access-item">
+        <div class="access-icon">
+          <img
+            src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%231E8E6E' d='M21,5c-1.11-0.35-2.33-0.5-3.5-0.5c-1.95,0-4.05,0.4-5.5,1.5c-1.45-1.1-3.55-1.5-5.5-1.5S2.45,4.9,1,6v14.65c0,0.25,0.25,0.5,0.5,0.5c0.1,0,0.15-0.05,0.25-0.05C3.1,20.45,5.05,20,6.5,20c1.95,0,4.05,0.4,5.5,1.5c1.35-0.85,3.8-1.5,5.5-1.5c1.65,0,3.35,0.3,4.75,1.05c0.1,0.05,0.15,0.05,0.25,0.05c0.25,0,0.5-0.25,0.5-0.5V6C22.4,5.55,21.75,5.25,21,5z M21,18.5c-1.1-0.35-2.3-0.5-3.5-0.5c-1.7,0-4.15,0.65-5.5,1.5V8c1.35-0.85,3.8-1.5,5.5-1.5c1.2,0,2.4,0.15,3.5,0.5V18.5z'/></svg>"
+            alt="知识库图标">
+        </div>
+        <h3 class="access-title">廉洁知识库</h3>
+        <p class="access-desc">探索廉洁文化历史渊源，学习传统廉洁思想精髓</p>
+      </div>
+      <div class="access-item">
+        <div class="access-icon">
+          <img
+            src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%2353B78A' d='M21.58,16.09l-1.09-7.66C20.21,6.46,18.52,5,16.53,5H7.47C5.48,5,3.79,6.46,3.51,8.43l-1.09,7.66 C2.2,17.63,3.39,19,4.94,19h0c0.68,0,1.32-0.27,1.8-0.75L9,16h6l2.25,2.25c0.48,0.48,1.13,0.75,1.8,0.75h0 C20.61,19,21.8,17.63,21.58,16.09z M11,11H9v2H8v-2H6v-1h2V8h1v2h2V11z M15,10c-0.55,0-1-0.45-1-1c0-0.55,0.45-1,1-1s1,0.45,1,1 C16,9.55,15.55,10,15,10z M17,13c-0.55,0-1-0.45-1-1c0-0.55,0.45-1,1-1s1,0.45,1,1C18,12.55,17.55,13,17,13z'/></svg>"
+            alt="互动游戏图标">
+        </div>
+        <h3 class="access-title">廉洁互动游戏</h3>
+        <p class="access-desc">寓教于乐，通过游戏体验学习廉洁知识</p>
+
+      </div>
+      <div class="access-item">
+        <div class="access-icon">
+          <img
+            src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%2379CDBB' d='M22,16V4c0-1.1-0.9-2-2-2H8C6.9,2,6,2.9,6,4v12c0,1.1,0.9,2,2,2h12C21.1,18,22,17.1,22,16z M11,12l2.03,2.71L16,11l4,5H8 L11,12z M2,6v14c0,1.1,0.9,2,2,2h14v-2H4V6H2z'/></svg>"
+            alt="作品墙图标">
+        </div>
+        <h3 class="access-title">作品展示墙</h3>
+        <p class="access-desc">展示廉洁主题原创作品，共赏艺术创作之美</p>
+      </div>
+      <div class="access-item">
+        <div class="access-icon">
+          <img
+            src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%23ACE1D6' d='M18,2H6C4.9,2,4,2.9,4,4v16c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2V4C20,2.9,19.1,2,18,2z M9,4h2v5l-1-0.75L9,9V4z M18,20H6V4h1v9l3-2.25L13,13V4h5V20z'/></svg>"
+            alt="承诺墙图标">
+        </div>
+        <h3 class="access-title">电子承诺墙</h3>
+        <p class="access-desc">立下廉洁承诺，生成个性化电子海报</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 脚注 -->
+  <footer>
+    <p>© 2025廉洁教育平台 lkl </p>
+  </footer>
+
+  <script>
+    // 标语循环播放
+    const sloganElement = document.getElementById('slogan');
+    const slogans = [
+      "清正在德，廉洁在志",
+      "清风正气，廉洁修身",
+      "以廉为荣，以贪为耻",
+      "莲出淤泥而不染，竹经霜雪而犹青",
+      "勤俭持家，廉洁齐家"
+    ];
+    let currentSloganIndex = 0;
+
+    setInterval(() => {
+      currentSloganIndex = (currentSloganIndex + 1) % slogans.length;
+
+      // 添加淡出动画
+      sloganElement.classList.add('animate__animated', 'animate__fadeOut');
+
+      setTimeout(() => {
+        sloganElement.textContent = slogans[currentSloganIndex];
+        sloganElement.classList.remove('animate__fadeOut');
+        sloganElement.classList.add('animate__fadeIn');
+
+        setTimeout(() => {
+          sloganElement.classList.remove('animate__animated', 'animate__fadeIn');
+        }, 1000);
+      }, 500);
+    }, 5000);
+
+    // 创建飘落的莲花和竹叶元素
+    const fallingContainer = document.querySelector('.falling-elements');
+
+    function createFallingElement(type) {
+      const element = document.createElement('div');
+      element.classList.add('element', type);
+
+      // 随机位置
+      const startPosX = Math.random() * window.innerWidth;
+      element.style.left = `${startPosX}px`;
+      element.style.top = '-60px';
+
+      // 随机大小
+      const scale = 0.5 + Math.random() * 1;
+      element.style.transform = `scale(${scale}) rotate(${Math.random() * 360}deg)`;
+
+      // 随机透明度
+      element.style.opacity = 0.3 + Math.random() * 0.4;
+
+      fallingContainer.appendChild(element);
+
+      // 飘落动画
+      const animationDuration = 15 + Math.random() * 15;
+      const horizontalMovement = -100 + Math.random() * 200;
+
+      // 使用CSS动画
+      element.animate([
+        { transform: `scale(${scale}) rotate(${Math.random() * 360}deg) translateX(0)` },
+        { transform: `scale(${scale}) rotate(${Math.random() * 360 + 360}deg) translateX(${horizontalMovement}px)` }
+      ], {
+        duration: animationDuration * 1000,
+        easing: 'linear',
+        fill: 'forwards'
+      });
+
+      // 垂直移动
+      let posY = -60;
+      const gravity = 0.5 + Math.random() * 1;
+
+      function fall() {
+        posY += gravity;
+        element.style.top = `${posY}px`;
+
+        if (posY < window.innerHeight + 100) {
+          requestAnimationFrame(fall);
+        } else {
+          element.remove();
+        }
+      }
+
+      fall();
+    }
+
+    // 初始创建几个元素
+    for (let i = 0; i < 5; i++) {
+      setTimeout(() => {
+        createFallingElement(Math.random() > 0.5 ? 'lotus' : 'bamboo');
+      }, i * 1000);
+    }
+
+    // 每隔几秒创建新的元素
+    setInterval(() => {
+      createFallingElement(Math.random() > 0.6 ? 'lotus' : 'bamboo');
+    }, 3000);
+
+    // 点击标语触发莲花绽放动画
+    sloganElement.addEventListener('click', (e) => {
+      const rect = sloganElement.getBoundingClientRect();
+      const centerX = (e.clientX - rect.left) - 150;
+      const centerY = (e.clientY - rect.top) - 150;
+
+      const bloom = document.createElement('div');
+      bloom.classList.add('lotus-bloom');
+      bloom.style.left = `${centerX}px`;
+      bloom.style.top = `${centerY}px`;
+
+      sloganElement.appendChild(bloom);
+
+      // 动画结束后移除元素
+      setTimeout(() => {
+        bloom.remove();
+      }, 1500);
+    });
+
+    // 导航栏滚动效果
+    window.addEventListener('scroll', () => {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 100) {
+        navbar.style.padding = '5px 0';
+        navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+      } else {
+        navbar.style.padding = '15px 0';
+        navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+      }
+    });
+
+    // 入口项点击跳转
+    document.querySelectorAll('.access-item').forEach((item, index) => {
+      item.addEventListener('click', () => {
+        // 根据索引跳转到对应页面
+        const routes = [
+          'knowledge.html',
+          'games.html',
+          'showcase.html',
+          'pledge-wall.html'
+        ];
+        window.location.href = routes[index];
+      });
+    });
+  </script>
+</body>
+
+</html>
